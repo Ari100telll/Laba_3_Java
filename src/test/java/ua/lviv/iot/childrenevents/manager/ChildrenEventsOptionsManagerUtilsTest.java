@@ -2,12 +2,9 @@ package ua.lviv.iot.childrenevents.manager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 import ua.lviv.iot.childrenevents.model.SortType;
 
 class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsManagerTest {

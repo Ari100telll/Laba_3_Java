@@ -1,7 +1,5 @@
 package ua.lviv.iot.childrenevents.model;
 
-import java.util.Comparator;
-
 public class ChildrenEventsOption {
 	protected String name;
 	protected String contacts;
@@ -124,18 +122,6 @@ public class ChildrenEventsOption {
 				+ ", venue=" + venue + "]";
 	}
 
-	public static Comparator<ChildrenEventsOption> priceInUAHComparator = new Comparator<ChildrenEventsOption>() {
-		@Override
-		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
-			return (ceo2.getPriceInUAH() < ceo1.getPriceInUAH()) ? -1
-					: ceo2.getPriceInUAH() == ceo1.getPriceInUAH() ? 0 : 1;
-		}
-	};
-	public static Comparator<ChildrenEventsOption> nameComparator = new Comparator<ChildrenEventsOption>() {
-		@Override
-		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
-			return (int) (ceo1.getName().compareTo(ceo2.getName()));
-		}
-	};
+	
 
 }

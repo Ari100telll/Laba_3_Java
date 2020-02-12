@@ -9,10 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ua.lviv.iot.childrenevents.manager.ChildrenEventsOptionsManager;
-import ua.lviv.iot.childrenevents.manager.ChildrenEventsOptionsManagerUtils;
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 import ua.lviv.iot.childrenevents.model.EventVenue;
-import ua.lviv.iot.childrenevents.model.SortType;
 import ua.lviv.iot.childrenevents.model.SportEvent;
 
 class ChildrenEventsOptionsManagerTest extends BaseChildrenEventsOptionsManagerTest {

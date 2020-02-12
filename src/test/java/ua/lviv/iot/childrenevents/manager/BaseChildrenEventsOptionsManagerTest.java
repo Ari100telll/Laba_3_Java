@@ -5,7 +5,6 @@ import java.util.List;
 
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 import ua.lviv.iot.childrenevents.model.EventVenue;
-import ua.lviv.iot.childrenevents.model.MasterClass;
 import ua.lviv.iot.childrenevents.model.SportEvent;
 
 public abstract class BaseChildrenEventsOptionsManagerTest {

@@ -11,11 +11,11 @@ public class ChildrenEventsOptionsManagerUtils {
 
 	public static void sortByPrice(List<ChildrenEventsOption> childrenEventsOptions, SortType sortType) {
 		ChildrenEventsOptionsManagerUtils.sortBy(childrenEventsOptions, sortType,
-				ChildrenEventsOption.priceInUAHComparator);
+				priceInUAHComparator);
 	}
 
 	public static void sortByName(List<ChildrenEventsOption> childrenEventsOptions, SortType sortType) {
-		ChildrenEventsOptionsManagerUtils.sortBy(childrenEventsOptions, sortType, ChildrenEventsOption.nameComparator);
+		ChildrenEventsOptionsManagerUtils.sortBy(childrenEventsOptions, sortType, nameComparator);
 	}
 
 	public static void sortBy(List<ChildrenEventsOption> childrenEventsOptions, SortType sortType,
@@ -25,5 +25,18 @@ public class ChildrenEventsOptionsManagerUtils {
 			Collections.reverse(childrenEventsOptions);
 		}
 	}
+	private static Comparator<ChildrenEventsOption> priceInUAHComparator = new Comparator<ChildrenEventsOption>() {
+		@Override
+		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
+			return (ceo2.getPriceInUAH() < ceo1.getPriceInUAH()) ? -1
+					: ceo2.getPriceInUAH() == ceo1.getPriceInUAH() ? 0 : 1;
+		}
+	};
+	private static Comparator<ChildrenEventsOption> nameComparator = new Comparator<ChildrenEventsOption>() {
+		@Override
+		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
+			return (int) (ceo1.getName().compareTo(ceo2.getName()));
+		}
+	};
 
 }
