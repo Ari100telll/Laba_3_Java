@@ -17,43 +17,93 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 	@Test
 	public void testSortByPriceAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.ASCENDING);
-		for (int i = 1; i < childrenEventsOptions.size(); i++) {
-			if (childrenEventsOptions.get(i - 1).getPriceInUAH() < childrenEventsOptions.get(i).getPriceInUAH()) {
-				fail("Incorrect order of elements after ascending sort by price");
-			}
-		}
+		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 10);		
+		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 11);		
+		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);		
+		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 45);		
+		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 150);	
 	}
 
 	@Test
 	public void testSortByPriceDescending() {
-	ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.DESCENDING);
-			for (int i = 1; i < childrenEventsOptions.size(); i++) {
-				if (childrenEventsOptions.get(i - 1).getPriceInUAH() > childrenEventsOptions.get(i).getPriceInUAH()) {
-					fail("Incorrect order of elements after decending sort by price");
-				}
-			}
+		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.DESCENDING);
+		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 150);		
+		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 45);		
+		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);		
+		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 11);		
+		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 10);
 
 	}
 
 	@Test
 	public void testSortByNameAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByName(childrenEventsOptions, SortType.ASCENDING);
-		for (int i = 1; i < childrenEventsOptions.size(); i++) {
-			if(childrenEventsOptions.get(i-1).getName().compareTo(childrenEventsOptions.get(i).getName())>0) {
-				fail("Incorrect order of elements after ascending sort by name");
-			}
-		}
+		assertEquals(childrenEventsOptions.get(0).getName(), "aaa");
+		assertEquals(childrenEventsOptions.get(1).getName(), "aba");
+		assertEquals(childrenEventsOptions.get(2).getName(), "abb");
+		assertEquals(childrenEventsOptions.get(3).getName(), "baa");
+		assertEquals(childrenEventsOptions.get(4).getName(), "bab");
 	}
 
 	@Test
 	public void testSortByNameDescending() {
 		ChildrenEventsOptionsManagerUtils.sortByName(childrenEventsOptions, SortType.DESCENDING);
-		for (int i = 1; i < childrenEventsOptions.size(); i++) {
-			if(childrenEventsOptions.get(i-1).getName().compareTo(childrenEventsOptions.get(i).getName())<0) {
-				fail("Incorrect order of elements after decending sort by name");
-			}
-			
-		}
+		assertEquals(childrenEventsOptions.get(0).getName(), "bab");
+		assertEquals(childrenEventsOptions.get(1).getName(), "baa");
+		assertEquals(childrenEventsOptions.get(2).getName(), "abb");
+		assertEquals(childrenEventsOptions.get(3).getName(), "aba");
+		assertEquals(childrenEventsOptions.get(4).getName(), "aaa");
+	}
+	
+	@Test
+	public void testSortByMaxQuantityOfChildrenAscending() {
+		ChildrenEventsOptionsManagerUtils.sortByMaxQuantityOfChildren(childrenEventsOptions, SortType.ASCENDING);
+		assertEquals(childrenEventsOptions.get(0).getMaxQuantityOfChildren(), 4);
+		assertEquals(childrenEventsOptions.get(1).getMaxQuantityOfChildren(), 7);
+		assertEquals(childrenEventsOptions.get(2).getMaxQuantityOfChildren(), 8);
+		assertEquals(childrenEventsOptions.get(3).getMaxQuantityOfChildren(), 10);
+		assertEquals(childrenEventsOptions.get(4).getMaxQuantityOfChildren(), 17);
+	}
+
+	@Test
+	public void testSortByMaxQuantityOfChildrenDescending() {
+		ChildrenEventsOptionsManagerUtils.sortByMaxQuantityOfChildren(childrenEventsOptions, SortType.DESCENDING);
+		assertEquals(childrenEventsOptions.get(0).getMaxQuantityOfChildren(), 17);
+		assertEquals(childrenEventsOptions.get(1).getMaxQuantityOfChildren(), 10);
+		assertEquals(childrenEventsOptions.get(2).getMaxQuantityOfChildren(), 8);
+		assertEquals(childrenEventsOptions.get(3).getMaxQuantityOfChildren(), 7);
+		assertEquals(childrenEventsOptions.get(4).getMaxQuantityOfChildren(), 4);
+	}
+	
+	/*
+	 * //	childrenEventsOptions.add(new ChildrenEventsOption(name, contacts, priceInUAH, maxQuantityOfChildren, durationInMinutes, venue)
+	 * childrenEventsOptions.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
+		childrenEventsOptions.add(new ChildrenEventsOption("bab", null, 11, 17, 240, EventVenue.MIXED));
+		childrenEventsOptions.add(new ChildrenEventsOption("baa", null, 150, 8, 90, EventVenue.INDOOR));
+		childrenEventsOptions.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
+		childrenEventsOptions.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", new String[] { "ball", "jump rope" }));
+	
+	 */
+	
+	@Test
+	public void testSortByDurationInMinutesAscending() {
+		ChildrenEventsOptionsManagerUtils.sortByDurationInMinutes(childrenEventsOptions, SortType.ASCENDING);
+		assertEquals(childrenEventsOptions.get(0).getDurationInMinutes(), 80);
+		assertEquals(childrenEventsOptions.get(1).getDurationInMinutes(), 90);
+		assertEquals(childrenEventsOptions.get(2).getDurationInMinutes(), 120);
+		assertEquals(childrenEventsOptions.get(3).getDurationInMinutes(), 150);
+		assertEquals(childrenEventsOptions.get(4).getDurationInMinutes(), 240);
+	
+	}
+
+	@Test
+	public void testSortByDurationInMinutesDescending() {
+		ChildrenEventsOptionsManagerUtils.sortByDurationInMinutes(childrenEventsOptions, SortType.DESCENDING);
+		assertEquals(childrenEventsOptions.get(0).getDurationInMinutes(), 240);
+		assertEquals(childrenEventsOptions.get(1).getDurationInMinutes(), 150);
+		assertEquals(childrenEventsOptions.get(2).getDurationInMinutes(), 120);
+		assertEquals(childrenEventsOptions.get(3).getDurationInMinutes(), 90);
+		assertEquals(childrenEventsOptions.get(4).getDurationInMinutes(), 80);
 	}
 
 }

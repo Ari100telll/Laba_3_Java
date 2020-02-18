@@ -1,5 +1,7 @@
 package ua.lviv.iot.childrenevents.model;
 
+import java.util.Comparator;
+
 public class ChildrenEventsOption {
 	protected String name;
 	protected String contacts;
@@ -69,6 +71,11 @@ public class ChildrenEventsOption {
 	public ChildrenEventsOption(double priceInUAH) {
 		this(null, null, priceInUAH, 0, 0, null);
 	}
+	
+
+	public ChildrenEventsOption() {
+		this(0);
+	}
 
 	@Override
 	public int hashCode() {
@@ -121,7 +128,30 @@ public class ChildrenEventsOption {
 				+ ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes
 				+ ", venue=" + venue + "]";
 	}
+///SortByPriceInUAHComparator
+	public static class SortByPriceInUAHComparator implements Comparator<ChildrenEventsOption> {
 
+		@Override
+		public int compare(ChildrenEventsOption o1, ChildrenEventsOption o2) {
+			return (int) (o1.getPriceInUAH() - o2.getPriceInUAH());
+		}
+
+	}
+
+	public class SortByNameComparator implements Comparator<ChildrenEventsOption> {
+
+		@Override
+		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
+			return (int) (ceo1.getName().compareTo(ceo2.getName()));
+		}
+	}
 	
-
+	/*public static Comparator<ChildrenEventsOption> priceInUAHComparator = new Comparator<ChildrenEventsOption>() {
+		//@Override
+		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
+			return (ceo2.getPriceInUAH() < ceo1.getPriceInUAH()) ? -1
+					: ceo2.getPriceInUAH() == ceo1.getPriceInUAH() ? 0 : 1;
+		}
+	};*/
+	
 }
