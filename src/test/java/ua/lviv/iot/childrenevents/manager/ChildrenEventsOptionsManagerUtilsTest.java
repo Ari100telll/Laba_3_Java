@@ -17,20 +17,20 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 	@Test
 	public void testSortByPriceAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.ASCENDING);
-		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 10);		
-		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 11);		
-		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);		
-		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 45);		
-		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 150);	
+		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 10);
+		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 11);
+		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);
+		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 45);
+		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 150);
 	}
 
 	@Test
 	public void testSortByPriceDescending() {
 		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.DESCENDING);
-		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 150);		
-		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 45);		
-		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);		
-		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 11);		
+		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 150);
+		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 45);
+		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);
+		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 11);
 		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 10);
 
 	}
@@ -54,7 +54,7 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 		assertEquals(childrenEventsOptions.get(3).getName(), "aba");
 		assertEquals(childrenEventsOptions.get(4).getName(), "aaa");
 	}
-	
+
 	@Test
 	public void testSortByMaxQuantityOfChildrenAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByMaxQuantityOfChildren(childrenEventsOptions, SortType.ASCENDING);
@@ -74,17 +74,7 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 		assertEquals(childrenEventsOptions.get(3).getMaxQuantityOfChildren(), 7);
 		assertEquals(childrenEventsOptions.get(4).getMaxQuantityOfChildren(), 4);
 	}
-	
-	/*
-	 * //	childrenEventsOptions.add(new ChildrenEventsOption(name, contacts, priceInUAH, maxQuantityOfChildren, durationInMinutes, venue)
-	 * childrenEventsOptions.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
-		childrenEventsOptions.add(new ChildrenEventsOption("bab", null, 11, 17, 240, EventVenue.MIXED));
-		childrenEventsOptions.add(new ChildrenEventsOption("baa", null, 150, 8, 90, EventVenue.INDOOR));
-		childrenEventsOptions.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
-		childrenEventsOptions.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", new String[] { "ball", "jump rope" }));
-	
-	 */
-	
+
 	@Test
 	public void testSortByDurationInMinutesAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByDurationInMinutes(childrenEventsOptions, SortType.ASCENDING);
@@ -93,7 +83,7 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 		assertEquals(childrenEventsOptions.get(2).getDurationInMinutes(), 120);
 		assertEquals(childrenEventsOptions.get(3).getDurationInMinutes(), 150);
 		assertEquals(childrenEventsOptions.get(4).getDurationInMinutes(), 240);
-	
+
 	}
 
 	@Test

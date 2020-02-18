@@ -38,7 +38,8 @@ public class ChildrenEventsOptionsManager {
 					&& (childrenEventsOption.getPriceInUAH() > minPriceInUAH)
 					&& (childrenEventsOption.getMaxQuantityOfChildren() > quantityOf—hildren)
 					&& (childrenEventsOption.getDurationInMinutes() < maxDurationInMinutes)
-					&& ((childrenEventsOption.getVenue() == venue) || (childrenEventsOption.getVenue() == EventVenue.MIXED))) {
+					&& ((childrenEventsOption.getVenue() == venue)
+							|| (childrenEventsOption.getVenue() == EventVenue.MIXED))) {
 				findedChildrenEventsOption.add(childrenEventsOption);
 			}
 		}
@@ -49,5 +50,5 @@ public class ChildrenEventsOptionsManager {
 		super();
 		childrenEventsOptions = new LinkedList<ChildrenEventsOption>();
 	}
-	
+
 }
