@@ -22,11 +22,15 @@ class ChildrenEventsOptionsManagerTest extends BaseChildrenEventsOptionsManagerT
 	@BeforeEach
 	public void setUp() {
 		createChildrenEventsOptions();
+		List<String> sportEquipment = new LinkedList<String>();
+		sportEquipment.add("ball");
+		sportEquipment.add("jump rope");
 		childrenEventsOptionsManager = new ChildrenEventsOptionsManager();
 		childrenEventsOptionsManager.addEventsOptions(childrenEventsOptions);
 		expectedChildrenEventsOption.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
 		expectedChildrenEventsOption.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
-		expectedChildrenEventsOption.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", new String[] { "ball", "jump rope" }));
+		expectedChildrenEventsOption
+				.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", sportEquipment));
 	}
 
 	@Test

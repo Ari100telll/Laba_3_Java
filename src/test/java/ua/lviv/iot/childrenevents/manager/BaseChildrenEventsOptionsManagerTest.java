@@ -12,12 +12,15 @@ public abstract class BaseChildrenEventsOptionsManagerTest {
 	protected List<ChildrenEventsOption> childrenEventsOptions;
 
 	public void createChildrenEventsOptions() {
+		List<String> sportEquipment = new LinkedList<String>();
+		sportEquipment.add("ball");
+		sportEquipment.add("jump rope");
 		childrenEventsOptions = new LinkedList<ChildrenEventsOption>();
 		childrenEventsOptions.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
 		childrenEventsOptions.add(new ChildrenEventsOption("bab", null, 11, 17, 240, EventVenue.MIXED));
 		childrenEventsOptions.add(new ChildrenEventsOption("baa", null, 150, 8, 90, EventVenue.INDOOR));
 		childrenEventsOptions.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
-		childrenEventsOptions.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", new String[] { "ball", "jump rope" }));
+		childrenEventsOptions.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", sportEquipment));
 	}
 
 }

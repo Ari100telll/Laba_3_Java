@@ -1,15 +1,15 @@
 package ua.lviv.iot.childrenevents.model;
 
 public class CostumeParty extends ChildrenEventsOption {
-	private double priceForOneCostumeInUAH;
+	private double priceForOneCostumeInHryvnas;
 	private String topic;
 
-	public double getPriceForOneCostumeInUAH() {
-		return priceForOneCostumeInUAH;
+	public double getPriceForOneCostumeInHryvnas() {
+		return priceForOneCostumeInHryvnas;
 	}
 
-	public void setPriceForOneCostumeInUAH(double priceForOneCostumeInUAH) {
-		this.priceForOneCostumeInUAH = priceForOneCostumeInUAH;
+	public void setPriceForOneCostumeInHryvnas(double priceForOneCostumeInHryvnas) {
+		this.priceForOneCostumeInHryvnas = priceForOneCostumeInHryvnas;
 	}
 
 	public String getTopic() {
@@ -20,10 +20,10 @@ public class CostumeParty extends ChildrenEventsOption {
 		this.topic = topic;
 	}
 
-	public CostumeParty(String name, String contacts, double priceInUAH, int maxQuantityOfChildren,
-			int durationInMinutes, EventVenue venue, double priceForOneCostumeInUAH, String topic) {
-		super(name, contacts, priceInUAH, maxQuantityOfChildren, durationInMinutes, venue);
-		this.priceForOneCostumeInUAH = priceForOneCostumeInUAH;
+	public CostumeParty(String name, String contacts, double priceInHryvnas, int maxQuantityOfChildren,
+			int durationInMinutes, EventVenue venue, double priceForOneCostumeInHryvnas, String topic) {
+		super(name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue);
+		this.priceForOneCostumeInHryvnas = priceForOneCostumeInHryvnas;
 		this.topic = topic;
 	}
 
@@ -32,7 +32,7 @@ public class CostumeParty extends ChildrenEventsOption {
 		final int prime = 31;
 		int result = super.hashCode();
 		long temp;
-		temp = Double.doubleToLongBits(priceForOneCostumeInUAH);
+		temp = Double.doubleToLongBits(priceForOneCostumeInHryvnas);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((topic == null) ? 0 : topic.hashCode());
 		return result;
@@ -40,30 +40,35 @@ public class CostumeParty extends ChildrenEventsOption {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		CostumeParty other = (CostumeParty) obj;
-		if (Double.doubleToLongBits(priceForOneCostumeInUAH) != Double.doubleToLongBits(other.priceForOneCostumeInUAH))
+		if (Double.doubleToLongBits(priceForOneCostumeInHryvnas) != Double
+				.doubleToLongBits(other.priceForOneCostumeInHryvnas)) {
 			return false;
+		}
 		if (topic == null) {
-			if (other.topic != null)
+			if (other.topic != null) {
 				return false;
-		} else if (!topic.equals(other.topic))
+			}
+		} else if (!topic.equals(other.topic)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CostumeParty [priceForOneCostumeInUAH=" + priceForOneCostumeInUAH + ", topic=" + topic + ", name="
-				+ name + ", contacts=" + contacts + ", priceInUAH=" + priceInUAH + ", maxQuantityOfChildren="
+		return "CostumeParty [priceForOneCostumeInHryvnas=" + priceForOneCostumeInHryvnas + ", topic=" + topic + ", name="
+				+ name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas + ", maxQuantityOfChildren="
 				+ maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes + ", venue=" + venue + "]";
 	}
-
-	
 
 }

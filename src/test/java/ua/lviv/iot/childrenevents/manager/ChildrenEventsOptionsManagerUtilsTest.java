@@ -17,21 +17,21 @@ class ChildrenEventsOptionsManagerUtilsTest extends BaseChildrenEventsOptionsMan
 	@Test
 	public void testSortByPriceAscending() {
 		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.ASCENDING);
-		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 10);
-		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 11);
-		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);
-		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 45);
-		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 150);
+		assertEquals(childrenEventsOptions.get(0).getPriceInHryvnas(), 10);
+		assertEquals(childrenEventsOptions.get(1).getPriceInHryvnas(), 11);
+		assertEquals(childrenEventsOptions.get(2).getPriceInHryvnas(), 32);
+		assertEquals(childrenEventsOptions.get(3).getPriceInHryvnas(), 45);
+		assertEquals(childrenEventsOptions.get(4).getPriceInHryvnas(), 150);
 	}
 
 	@Test
 	public void testSortByPriceDescending() {
 		ChildrenEventsOptionsManagerUtils.sortByPrice(childrenEventsOptions, SortType.DESCENDING);
-		assertEquals(childrenEventsOptions.get(0).getPriceInUAH(), 150);
-		assertEquals(childrenEventsOptions.get(1).getPriceInUAH(), 45);
-		assertEquals(childrenEventsOptions.get(2).getPriceInUAH(), 32);
-		assertEquals(childrenEventsOptions.get(3).getPriceInUAH(), 11);
-		assertEquals(childrenEventsOptions.get(4).getPriceInUAH(), 10);
+		assertEquals(childrenEventsOptions.get(0).getPriceInHryvnas(), 150);
+		assertEquals(childrenEventsOptions.get(1).getPriceInHryvnas(), 45);
+		assertEquals(childrenEventsOptions.get(2).getPriceInHryvnas(), 32);
+		assertEquals(childrenEventsOptions.get(3).getPriceInHryvnas(), 11);
+		assertEquals(childrenEventsOptions.get(4).getPriceInHryvnas(), 10);
 
 	}
 

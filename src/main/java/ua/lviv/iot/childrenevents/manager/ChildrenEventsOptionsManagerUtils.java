@@ -1,23 +1,23 @@
 package ua.lviv.iot.childrenevents.manager;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 import ua.lviv.iot.childrenevents.model.SortType;
 
 public class ChildrenEventsOptionsManagerUtils {
 
 	public static void sortByPrice(List<ChildrenEventsOption> childrenEventsOptions, SortType sortType) {
-		childrenEventsOptions.sort(new ChildrenEventsOptionsManagerUtils.SortByPriceInUAHComparator());
+		childrenEventsOptions.sort(new ChildrenEventsOptionsManagerUtils.SortByPriceInHryvnasComparator());
 		if (sortType == SortType.DESCENDING) {
 			Collections.reverse(childrenEventsOptions);
 		}
 	}
 
 	public static void sortByName(List<ChildrenEventsOption> childrenEventsOptions, SortType sortType) {
-		childrenEventsOptions.sort((new ChildrenEventsOptionsManagerUtils()).new SortByNameComparator());
+		childrenEventsOptions.sort(new ChildrenEventsOptionsManagerUtils().new SortByNameComparator());
 		if (sortType == SortType.DESCENDING) {
 			Collections.reverse(childrenEventsOptions);
 		}
@@ -45,11 +45,12 @@ public class ChildrenEventsOptionsManagerUtils {
 		}
 	}
 
-	public static class SortByPriceInUAHComparator implements Comparator<ChildrenEventsOption> {
+	public static class SortByPriceInHryvnasComparator implements Comparator<ChildrenEventsOption>,Serializable {
+		private static final long serialVersionUID = 1L;
 
 		@Override
 		public int compare(ChildrenEventsOption o1, ChildrenEventsOption o2) {
-			return (int) (o1.getPriceInUAH() - o2.getPriceInUAH());
+			return (int) (o1.getPriceInHryvnas() - o2.getPriceInHryvnas());
 		}
 
 	}
