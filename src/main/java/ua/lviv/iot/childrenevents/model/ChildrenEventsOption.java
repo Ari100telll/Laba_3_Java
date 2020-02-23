@@ -1,11 +1,9 @@
 package ua.lviv.iot.childrenevents.model;
 
-import java.util.Comparator;
-
 public class ChildrenEventsOption {
 	protected String name;
 	protected String contacts;
-	protected double priceInUAH;
+	protected double priceInHryvnas;
 	protected int maxQuantityOfChildren;
 	protected int durationInMinutes;
 	protected EventVenue venue;
@@ -26,12 +24,12 @@ public class ChildrenEventsOption {
 		this.contacts = contacts;
 	}
 
-	public double getPriceInUAH() {
-		return priceInUAH;
+	public double getPriceInHryvnas() {
+		return priceInHryvnas;
 	}
 
-	public void setPriceInUAH(double priceInUAH) {
-		this.priceInUAH = priceInUAH;
+	public void setPriceInHryvnas(double priceInHryvnas) {
+		this.priceInHryvnas = priceInHryvnas;
 	}
 
 	public int getMaxQuantityOfChildren() {
@@ -58,18 +56,22 @@ public class ChildrenEventsOption {
 		this.venue = venue;
 	}
 
-	public ChildrenEventsOption(String name, String contacts, double priceInUAH, int maxQuantityOfChildren,
+	public ChildrenEventsOption(String name, String contacts, double priceInHryvnas, int maxQuantityOfChildren,
 			int durationInMinutes, EventVenue venue) {
 		this.name = name;
 		this.contacts = contacts;
-		this.priceInUAH = priceInUAH;
+		this.priceInHryvnas = priceInHryvnas;
 		this.maxQuantityOfChildren = maxQuantityOfChildren;
 		this.durationInMinutes = durationInMinutes;
 		this.venue = venue;
 	}
 
-	public ChildrenEventsOption(double priceInUAH) {
-		this(null, null, priceInUAH, 0, 0, null);
+	public ChildrenEventsOption(double priceInHryvnas) {
+		this(null, null, priceInHryvnas, 0, 0, null);
+	}
+
+	public ChildrenEventsOption() {
+		this(0);
 	}
 
 	@Override
@@ -81,7 +83,7 @@ public class ChildrenEventsOption {
 		result = prime * result + maxQuantityOfChildren;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(priceInUAH);
+		temp = Double.doubleToLongBits(priceInHryvnas);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((venue == null) ? 0 : venue.hashCode());
 		return result;
@@ -89,53 +91,50 @@ public class ChildrenEventsOption {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		ChildrenEventsOption other = (ChildrenEventsOption) obj;
 		if (contacts == null) {
-			if (other.contacts != null)
+			if (other.contacts != null) {
 				return false;
-		} else if (!contacts.equals(other.contacts))
+			}
+		} else if (!contacts.equals(other.contacts)) {
 			return false;
-		if (durationInMinutes != other.durationInMinutes)
+		}
+		if (durationInMinutes != other.durationInMinutes) {
 			return false;
-		if (maxQuantityOfChildren != other.maxQuantityOfChildren)
+		}
+		if (maxQuantityOfChildren != other.maxQuantityOfChildren) {
 			return false;
+		}
 		if (name == null) {
-			if (other.name != null)
+			if (other.name != null) {
 				return false;
-		} else if (!name.equals(other.name))
+			}
+		} else if (!name.equals(other.name)) {
 			return false;
-		if (Double.doubleToLongBits(priceInUAH) != Double.doubleToLongBits(other.priceInUAH))
+		}
+		if (Double.doubleToLongBits(priceInHryvnas) != Double.doubleToLongBits(other.priceInHryvnas)) {
 			return false;
-		if (venue != other.venue)
+		}
+		if (venue != other.venue) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "ChildrenEventsOption [name=" + name + ", contacts=" + contacts + ", priceInUAH=" + priceInUAH
+		return "ChildrenEventsOption [name=" + name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas
 				+ ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes
 				+ ", venue=" + venue + "]";
 	}
-
-	public static Comparator<ChildrenEventsOption> priceInUAHComparator = new Comparator<ChildrenEventsOption>() {
-		@Override
-		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
-			return (ceo2.getPriceInUAH() < ceo1.getPriceInUAH()) ? -1
-					: ceo2.getPriceInUAH() == ceo1.getPriceInUAH() ? 0 : 1;
-		}
-	};
-	public static Comparator<ChildrenEventsOption> nameComparator = new Comparator<ChildrenEventsOption>() {
-		@Override
-		public int compare(ChildrenEventsOption ceo1, ChildrenEventsOption ceo2) {
-			return (int) (ceo1.getName().compareTo(ceo2.getName()));
-		}
-	};
 
 }

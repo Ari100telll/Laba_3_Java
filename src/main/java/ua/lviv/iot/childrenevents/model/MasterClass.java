@@ -1,30 +1,30 @@
 package ua.lviv.iot.childrenevents.model;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class MasterClass extends ChildrenEventsOption {
-	private String specialSkills[];
-	private String equipment[];
+	private List<String> specialSkills;
+	private List<String> equipment;
 
-	public String[] getSpecialSkills() {
-		return specialSkills;
+	public List<String> getSpecialSkills() {
+		return this.specialSkills;
 	}
 
-	public void setSpecialSkills(String[] specialSkills) {
+	public void setSpecialSkills(List<String> specialSkills) {
 		this.specialSkills = specialSkills;
 	}
 
-	public String[] getEquipment() {
-		return equipment;
+	public List<String> getEquipment() {
+		return this.equipment;
 	}
 
-	public void setEquipment(String[] equipment) {
+	public void setEquipment(List<String> equipment) {
 		this.equipment = equipment;
 	}
 
-	public MasterClass(String name, String contacts, double priceInUAH, int maxQuantityOfChildren,
-			int durationInMinutes, EventVenue venue, String[] specialSkills, String[] equipment) {
-		super(name, contacts, priceInUAH, maxQuantityOfChildren, durationInMinutes, venue);
+	public MasterClass(String name, String contacts, double priceInHryvnas, int maxQuantityOfChildren,
+			int durationInMinutes, EventVenue venue, List<String> specialSkills, List<String> equipment) {
+		super(name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue);
 		this.specialSkills = specialSkills;
 		this.equipment = equipment;
 	}
@@ -33,33 +33,43 @@ public class MasterClass extends ChildrenEventsOption {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Arrays.hashCode(equipment);
-		result = prime * result + Arrays.hashCode(specialSkills);
+		result = prime * result + ((equipment == null) ? 0 : equipment.hashCode());
+		result = prime * result + ((specialSkills == null) ? 0 : specialSkills.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		MasterClass other = (MasterClass) obj;
-		if (!Arrays.equals(equipment, other.equipment))
+		if (equipment == null) {
+			if (other.equipment != null) {
+				return false;
+			}
+		} else if (!equipment.equals(other.equipment)) {
 			return false;
-		if (!Arrays.equals(specialSkills, other.specialSkills))
+		}
+		if (specialSkills == null) {
+			if (other.specialSkills != null) {
+				return false;
+			}
+		} else if (!specialSkills.equals(other.specialSkills)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "MasterClass [specialSkills=" + Arrays.toString(specialSkills) + ", equipment="
-				+ Arrays.toString(equipment) + ", name=" + name + ", contacts=" + contacts + ", priceInUAH="
-				+ priceInUAH + ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes="
-				+ durationInMinutes + ", venue=" + venue + "]";
+		return "MasterClass [specialSkills=" + specialSkills + ", equipment=" + equipment + "]";
 	}
 
 }
