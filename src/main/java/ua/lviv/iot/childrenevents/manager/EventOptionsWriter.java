@@ -9,7 +9,8 @@ import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 
 public class EventOptionsWriter {
 
-	public void writeToFile(List<ChildrenEventsOption> childrenEventsOptions, File file) {
+	public void writeToFile(List<ChildrenEventsOption> childrenEventsOptions, String fileName) {
+		File file = new File(fileName);
 		try (Writer textWriter = new FileWriter(file);) {
 			writeLine(textWriter, childrenEventsOptions.get(0).getHeaders());
 			for (ChildrenEventsOption childrenEventsOption : childrenEventsOptions) {

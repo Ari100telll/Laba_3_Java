@@ -7,19 +7,20 @@ import java.io.Reader;
 
 public class EventOptionsReader {
 
-	public String readFromFile(File file) {
-		String s = new String();
+	public String readFromFile(String fileName) {
+		File file = new File(fileName);
+		String returnString = "";
 		try (Reader reader = new FileReader(file);) {
-			int c = reader.read();
-			while (c != -1) {
-				s = s + (char) c;
-				c = reader.read();
+			int oneCharInInt = reader.read();
+			while (oneCharInInt != -1) {
+				returnString = returnString + (char) oneCharInInt;
+				oneCharInInt = reader.read();
 			}
 
 		} catch (IOException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-		return s;
+		return returnString;
 	}
 
 }
