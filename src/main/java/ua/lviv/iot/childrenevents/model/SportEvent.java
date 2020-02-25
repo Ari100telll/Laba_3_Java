@@ -72,4 +72,11 @@ public class SportEvent extends ChildrenEventsOption {
 		return "SportEvent [location=" + location + ", sportEquipment=" + sportEquipment + "]";
 	}
 
+	public String getHeaders() { 
+		return super.getHeaders() + ", location, sportEquipment";
+	}
+	
+	public String toCSV() { 
+		return super.toCSV() + ", " + location + ", " + sportEquipment;
+	}
 }

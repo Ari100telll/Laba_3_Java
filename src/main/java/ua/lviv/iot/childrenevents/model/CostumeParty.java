@@ -70,5 +70,11 @@ public class CostumeParty extends ChildrenEventsOption {
 				+ name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas + ", maxQuantityOfChildren="
 				+ maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes + ", venue=" + venue + "]";
 	}
+	public String getHeaders() { 
+		return super.getHeaders() + ", priceForOneCostumeInHryvnas, topic";
+	}
+	public String toCSV() { 
+		return super.toCSV() + ", " + priceForOneCostumeInHryvnas + ", " + topic;
+	}
 
 }
