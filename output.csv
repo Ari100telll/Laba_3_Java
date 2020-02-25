@@ -1,0 +1,5 @@
+name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue, aaa, null, 10.0, 7, 120, MIXED
+name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue, bab, null, 11.0, 17, 240, MIXED
+name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue, baa, null, 150.0, 8, 90, INDOOR
+name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue, aba, null, 32.0, 4, 150, INDOOR
+name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue, location, sportEquipment, abb, null, 45.0, 10, 80, INDOOR, KR, [ball, jump rope]
