@@ -137,12 +137,13 @@ public class ChildrenEventsOption {
 				+ ", venue=" + venue + "]";
 	}
 
-
 	public String getHeaders() {
 		return "name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue";
 	}
-	public String toCSV() { 
-		return name +  ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", " + durationInMinutes + ", " + venue;
+
+	public String toCSV() {
+		return name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", " + durationInMinutes
+				+ ", " + venue;
 	}
-	
+
 }

@@ -66,14 +66,17 @@ public class CostumeParty extends ChildrenEventsOption {
 
 	@Override
 	public String toString() {
-		return "CostumeParty [priceForOneCostumeInHryvnas=" + priceForOneCostumeInHryvnas + ", topic=" + topic + ", name="
-				+ name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas + ", maxQuantityOfChildren="
-				+ maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes + ", venue=" + venue + "]";
+		return "CostumeParty [priceForOneCostumeInHryvnas=" + priceForOneCostumeInHryvnas + ", topic=" + topic
+				+ ", name=" + name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas
+				+ ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes
+				+ ", venue=" + venue + "]";
 	}
-	public String getHeaders() { 
+
+	public String getHeaders() {
 		return super.getHeaders() + ", priceForOneCostumeInHryvnas, topic";
 	}
-	public String toCSV() { 
+
+	public String toCSV() {
 		return super.toCSV() + ", " + priceForOneCostumeInHryvnas + ", " + topic;
 	}
 

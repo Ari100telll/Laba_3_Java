@@ -72,10 +72,11 @@ public class MasterClass extends ChildrenEventsOption {
 		return "MasterClass [specialSkills=" + specialSkills + ", equipment=" + equipment + "]";
 	}
 
-	public String getHeaders() { 
+	public String getHeaders() {
 		return super.getHeaders() + ", specialSkills, equipment";
 	}
-	public String toCSV() { 
+
+	public String toCSV() {
 		return super.toCSV() + ", " + specialSkills + ", " + equipment;
 	}
 }
