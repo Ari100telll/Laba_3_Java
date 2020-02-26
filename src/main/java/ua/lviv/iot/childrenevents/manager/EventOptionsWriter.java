@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 
@@ -11,7 +12,7 @@ public class EventOptionsWriter {
 
 	public void writeToFile(List<ChildrenEventsOption> childrenEventsOptions, String fileName) {
 		File file = new File(fileName);
-		try (Writer textWriter = new FileWriter(file);) {
+		try (Writer textWriter = new FileWriter(file, StandardCharsets.UTF_8);) {
 			writeLine(textWriter, childrenEventsOptions.get(0).getHeaders());
 			for (ChildrenEventsOption childrenEventsOption : childrenEventsOptions) {
 				writeLine(textWriter, childrenEventsOption.toCSV());
