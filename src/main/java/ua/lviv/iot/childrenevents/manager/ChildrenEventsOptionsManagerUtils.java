@@ -45,7 +45,7 @@ public class ChildrenEventsOptionsManagerUtils {
 		}
 	}
 
-	public static class SortByPriceInHryvnasComparator implements Comparator<ChildrenEventsOption>,Serializable {
+	public static class SortByPriceInHryvnasComparator implements Comparator<ChildrenEventsOption>, Serializable {
 		private static final long serialVersionUID = 1L;
 
 		@Override
