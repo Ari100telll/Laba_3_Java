@@ -151,8 +151,8 @@ public class ChildrenEventsOption {
   }
 
   public String toCSV() {
-    return optionID + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", " + durationInMinutes
-        + ", " + venue;
+    return optionID + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", "
+        + durationInMinutes + ", " + venue;
   }
 
 }
