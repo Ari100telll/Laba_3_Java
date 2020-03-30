@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class RestApplication {
 
   public static void main(String[] args) {
-    System.out.println("---------------------------------------------------------------------------------------");
     SpringApplication.run(RestApplication.class, args);
   }
 

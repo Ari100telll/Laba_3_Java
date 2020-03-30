@@ -20,7 +20,6 @@ import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 
 @RestController
 @RequestMapping(path = "/ChildrenEventsOptions")
-
 public class ChildrenEventsOptionsController {
 
   private Map<Integer, ChildrenEventsOption> options = new HashMap<>();
@@ -53,12 +52,12 @@ public class ChildrenEventsOptionsController {
   public ResponseEntity<ChildrenEventsOption> updateOption(@PathVariable("id") Integer optionID,
       @RequestBody ChildrenEventsOption option) {
     option.setOptionID(optionID);
-    System.out.println(option.getOptionID());
-    if (options.remove(option.getOptionID()) != null) {
+    ChildrenEventsOption oldOption = options.remove(option.getOptionID());
+    if (oldOption != null) {
       options.put(option.getOptionID(), option);
-      return ResponseEntity.status(HttpStatus.OK).build();
+      return new ResponseEntity<ChildrenEventsOption>(oldOption, HttpStatus.OK);
     } else {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+      return new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND);
     }
   }
 }
