@@ -1,7 +1,18 @@
 package ua.lviv.iot.childrenevents.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "options")
 public class ChildrenEventsOption {
-  private int optionID;
+  
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
   protected String name;
   protected String contacts;
   protected double priceInHryvnas;
@@ -9,12 +20,12 @@ public class ChildrenEventsOption {
   protected int durationInMinutes;
   protected EventVenue venue;
 
-  public int getOptionID() {
-    return optionID;
+  public Integer getId() {
+    return id;
   }
 
-  public void setOptionID(int optionID) {
-    this.optionID = optionID;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getName() {
@@ -151,7 +162,7 @@ public class ChildrenEventsOption {
   }
 
   public String toCSV() {
-    return optionID + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", "
+    return id + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", "
         + durationInMinutes + ", " + venue;
   }
 

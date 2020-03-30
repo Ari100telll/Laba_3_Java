@@ -1,6 +1,6 @@
 optionID, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue
-0, aaa, null, 10.0, 7, 120, MIXED
-0, bab, null, 11.0, 17, 240, MIXED
-0, baa, null, 150.0, 8, 90, INDOOR
-0, aba, null, 32.0, 4, 150, INDOOR
-0, abb, null, 45.0, 10, 80, INDOOR, KR, [ball, jump rope]
+null, aaa, null, 10.0, 7, 120, MIXED
+null, bab, null, 11.0, 17, 240, MIXED
+null, baa, null, 150.0, 8, 90, INDOOR
+null, aba, null, 32.0, 4, 150, INDOOR
+null, abb, null, 45.0, 10, 80, INDOOR, KR, [ball, jump rope]
