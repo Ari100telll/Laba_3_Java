@@ -15,29 +15,28 @@ import ua.lviv.iot.childrenevents.model.SportEvent;
 
 class ChildrenEventsOptionsManagerTest extends BaseChildrenEventsOptionsManagerTest {
 
-	private ChildrenEventsOptionsManager childrenEventsOptionsManager;
+  private ChildrenEventsOptionsManager childrenEventsOptionsManager;
 
-	private List<ChildrenEventsOption> expectedChildrenEventsOption = new LinkedList<ChildrenEventsOption>();
+  private List<ChildrenEventsOption> expectedChildrenEventsOption = new LinkedList<ChildrenEventsOption>();
 
-	@BeforeEach
-	public void setUp() {
-		createChildrenEventsOptions();
-		List<String> sportEquipment = new LinkedList<String>();
-		sportEquipment.add("ball");
-		sportEquipment.add("jump rope");
-		childrenEventsOptionsManager = new ChildrenEventsOptionsManager();
-		childrenEventsOptionsManager.addEventsOptions(childrenEventsOptions);
-		expectedChildrenEventsOption.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
-		expectedChildrenEventsOption.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
-		expectedChildrenEventsOption
-				.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", sportEquipment));
-	}
+  @BeforeEach
+  public void setUp() {
+    createChildrenEventsOptions();
+    List<String> sportEquipment = new LinkedList<String>();
+    sportEquipment.add("ball");
+    sportEquipment.add("jump rope");
+    childrenEventsOptionsManager = new ChildrenEventsOptionsManager();
+    childrenEventsOptionsManager.addEventsOptions(childrenEventsOptions);
+    expectedChildrenEventsOption.add(new ChildrenEventsOption("aaa", null, 10, 7, 120, EventVenue.MIXED));
+    expectedChildrenEventsOption.add(new ChildrenEventsOption("aba", null, 32, 4, 150, EventVenue.INDOOR));
+    expectedChildrenEventsOption.add(new SportEvent("abb", null, 45, 10, 80, EventVenue.INDOOR, "KR", sportEquipment));
+  }
 
-	@Test
-	public void testFindOptionByCriterion() {
-		List<ChildrenEventsOption> findedChilChildrenEventsOptions = childrenEventsOptionsManager
-				.findOptionByCriterion(50, 0, 1, 200, EventVenue.INDOOR);
-		assertEquals(expectedChildrenEventsOption, findedChilChildrenEventsOptions);
-	}
+  @Test
+  public void testFindOptionByCriterion() {
+    List<ChildrenEventsOption> findedChilChildrenEventsOptions = childrenEventsOptionsManager.findOptionByCriterion(50,
+        0, 1, 200, EventVenue.INDOOR);
+    assertEquals(expectedChildrenEventsOption, findedChilChildrenEventsOptions);
+  }
 
 }

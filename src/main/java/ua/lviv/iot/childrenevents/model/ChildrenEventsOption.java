@@ -1,149 +1,169 @@
 package ua.lviv.iot.childrenevents.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "options")
 public class ChildrenEventsOption {
-	protected String name;
-	protected String contacts;
-	protected double priceInHryvnas;
-	protected int maxQuantityOfChildren;
-	protected int durationInMinutes;
-	protected EventVenue venue;
+  
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
+  protected String name;
+  protected String contacts;
+  protected double priceInHryvnas;
+  protected int maxQuantityOfChildren;
+  protected int durationInMinutes;
+  protected EventVenue venue;
 
-	public String getName() {
-		return name;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public String getContacts() {
-		return contacts;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setContacts(String contacts) {
-		this.contacts = contacts;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public double getPriceInHryvnas() {
-		return priceInHryvnas;
-	}
+  public String getContacts() {
+    return contacts;
+  }
 
-	public void setPriceInHryvnas(double priceInHryvnas) {
-		this.priceInHryvnas = priceInHryvnas;
-	}
+  public void setContacts(String contacts) {
+    this.contacts = contacts;
+  }
 
-	public int getMaxQuantityOfChildren() {
-		return maxQuantityOfChildren;
-	}
+  public double getPriceInHryvnas() {
+    return priceInHryvnas;
+  }
 
-	public void setMaxQuantityOfChildren(int maxQuantityOfChildren) {
-		this.maxQuantityOfChildren = maxQuantityOfChildren;
-	}
+  public void setPriceInHryvnas(double priceInHryvnas) {
+    this.priceInHryvnas = priceInHryvnas;
+  }
 
-	public int getDurationInMinutes() {
-		return durationInMinutes;
-	}
+  public int getMaxQuantityOfChildren() {
+    return maxQuantityOfChildren;
+  }
 
-	public void setDurationInMinutes(int durationInMinutes) {
-		this.durationInMinutes = durationInMinutes;
-	}
+  public void setMaxQuantityOfChildren(int maxQuantityOfChildren) {
+    this.maxQuantityOfChildren = maxQuantityOfChildren;
+  }
 
-	public EventVenue getVenue() {
-		return venue;
-	}
+  public int getDurationInMinutes() {
+    return durationInMinutes;
+  }
 
-	public void setVenue(EventVenue venue) {
-		this.venue = venue;
-	}
+  public void setDurationInMinutes(int durationInMinutes) {
+    this.durationInMinutes = durationInMinutes;
+  }
 
-	public ChildrenEventsOption(String name, String contacts, double priceInHryvnas, int maxQuantityOfChildren,
-			int durationInMinutes, EventVenue venue) {
-		this.name = name;
-		this.contacts = contacts;
-		this.priceInHryvnas = priceInHryvnas;
-		this.maxQuantityOfChildren = maxQuantityOfChildren;
-		this.durationInMinutes = durationInMinutes;
-		this.venue = venue;
-	}
+  public EventVenue getVenue() {
+    return venue;
+  }
 
-	public ChildrenEventsOption(double priceInHryvnas) {
-		this(null, null, priceInHryvnas, 0, 0, null);
-	}
+  public void setVenue(EventVenue venue) {
+    this.venue = venue;
+  }
 
-	public ChildrenEventsOption() {
-		this(0);
-	}
+  public ChildrenEventsOption(String name, String contacts, double priceInHryvnas, int maxQuantityOfChildren,
+      int durationInMinutes, EventVenue venue) {
+    this.name = name;
+    this.contacts = contacts;
+    this.priceInHryvnas = priceInHryvnas;
+    this.maxQuantityOfChildren = maxQuantityOfChildren;
+    this.durationInMinutes = durationInMinutes;
+    this.venue = venue;
+  }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((contacts == null) ? 0 : contacts.hashCode());
-		result = prime * result + durationInMinutes;
-		result = prime * result + maxQuantityOfChildren;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(priceInHryvnas);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((venue == null) ? 0 : venue.hashCode());
-		return result;
-	}
+  public ChildrenEventsOption(double priceInHryvnas) {
+    this(null, null, priceInHryvnas, 0, 0, null);
+  }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		ChildrenEventsOption other = (ChildrenEventsOption) obj;
-		if (contacts == null) {
-			if (other.contacts != null) {
-				return false;
-			}
-		} else if (!contacts.equals(other.contacts)) {
-			return false;
-		}
-		if (durationInMinutes != other.durationInMinutes) {
-			return false;
-		}
-		if (maxQuantityOfChildren != other.maxQuantityOfChildren) {
-			return false;
-		}
-		if (name == null) {
-			if (other.name != null) {
-				return false;
-			}
-		} else if (!name.equals(other.name)) {
-			return false;
-		}
-		if (Double.doubleToLongBits(priceInHryvnas) != Double.doubleToLongBits(other.priceInHryvnas)) {
-			return false;
-		}
-		if (venue != other.venue) {
-			return false;
-		}
-		return true;
-	}
+  public ChildrenEventsOption() {
+    this(0);
+  }
 
-	@Override
-	public String toString() {
-		return "ChildrenEventsOption [name=" + name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas
-				+ ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes
-				+ ", venue=" + venue + "]";
-	}
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((contacts == null) ? 0 : contacts.hashCode());
+    result = prime * result + durationInMinutes;
+    result = prime * result + maxQuantityOfChildren;
+    result = prime * result + ((name == null) ? 0 : name.hashCode());
+    long temp;
+    temp = Double.doubleToLongBits(priceInHryvnas);
+    result = prime * result + (int) (temp ^ (temp >>> 32));
+    result = prime * result + ((venue == null) ? 0 : venue.hashCode());
+    return result;
+  }
 
-	public String getHeaders() {
-		return "name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue";
-	}
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    ChildrenEventsOption other = (ChildrenEventsOption) obj;
+    if (contacts == null) {
+      if (other.contacts != null) {
+        return false;
+      }
+    } else if (!contacts.equals(other.contacts)) {
+      return false;
+    }
+    if (durationInMinutes != other.durationInMinutes) {
+      return false;
+    }
+    if (maxQuantityOfChildren != other.maxQuantityOfChildren) {
+      return false;
+    }
+    if (name == null) {
+      if (other.name != null) {
+        return false;
+      }
+    } else if (!name.equals(other.name)) {
+      return false;
+    }
+    if (Double.doubleToLongBits(priceInHryvnas) != Double.doubleToLongBits(other.priceInHryvnas)) {
+      return false;
+    }
+    if (venue != other.venue) {
+      return false;
+    }
+    return true;
+  }
 
-	public String toCSV() {
-		return name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", " + durationInMinutes
-				+ ", " + venue;
-	}
+  @Override
+  public String toString() {
+    return "ChildrenEventsOption [name=" + name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas
+        + ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes + ", venue="
+        + venue + "]";
+  }
+
+  public String getHeaders() {
+    return "optionID, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue";
+  }
+
+  public String toCSV() {
+    return id + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", "
+        + durationInMinutes + ", " + venue;
+  }
 
 }
