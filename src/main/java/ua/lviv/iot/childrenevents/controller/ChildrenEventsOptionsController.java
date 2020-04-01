@@ -30,8 +30,10 @@ public class ChildrenEventsOptionsController {
   }
 
   @GetMapping(path = "/{id}")
-  public ChildrenEventsOption getOption(final @PathVariable("id") Integer optionID) {
-    return childrenEventsOptionsService.getOption(optionID);
+  public ResponseEntity<ChildrenEventsOption> getOption(final @PathVariable("id") Integer optionID) {
+    ChildrenEventsOption option = childrenEventsOptionsService.getOption(optionID);
+    return option == null ? new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND)
+        : new ResponseEntity<ChildrenEventsOption>(option, HttpStatus.OK);
   }
 
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })

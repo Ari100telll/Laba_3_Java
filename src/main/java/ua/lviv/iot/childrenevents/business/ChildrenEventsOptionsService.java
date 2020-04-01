@@ -1,6 +1,8 @@
 package ua.lviv.iot.childrenevents.business;
 
 import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.lviv.iot.childrenevents.dataaccess.ChildrenEventsOptionsRepository;
@@ -17,7 +19,7 @@ public class ChildrenEventsOptionsService {
   }
 
   public ChildrenEventsOption getOption(Integer optionID) {
-    return childrenEventsOptionsRepository.findById(optionID).get();
+    return childrenEventsOptionsRepository.findById(optionID).orElse(null);
   }
 
   public List<ChildrenEventsOption> getAllOptions() {
@@ -25,16 +27,21 @@ public class ChildrenEventsOptionsService {
   }
 
   public ChildrenEventsOption updateOption(Integer optionID, ChildrenEventsOption option) {
-    ChildrenEventsOption oldOption = childrenEventsOptionsRepository.findById(optionID).get();
-    if (oldOption != null) {
+    ChildrenEventsOption oldOption = null;
+    ChildrenEventsOption temporaryOption = childrenEventsOptionsRepository.findById(optionID).orElse(null);
+    if (temporaryOption != null) {
+      oldOption = new ChildrenEventsOption();
+      BeanUtils.copyProperties(temporaryOption, oldOption);
       childrenEventsOptionsRepository.save(option);
     }
     return oldOption;
   }
 
   public ChildrenEventsOption deleteOption(Integer optionID) {
-    ChildrenEventsOption oldOption = childrenEventsOptionsRepository.findById(optionID).get();
-    childrenEventsOptionsRepository.deleteById(optionID);
+    ChildrenEventsOption oldOption = childrenEventsOptionsRepository.findById(optionID).orElse(null);
+    if (oldOption != null) {
+      childrenEventsOptionsRepository.deleteById(optionID);
+    }
     return oldOption;
   }
 }
