@@ -1,4 +1,4 @@
-optionID, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue
+id, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue
 null, aaa, null, 10.0, 7, 120, MIXED
 null, bab, null, 11.0, 17, 240, MIXED
 null, baa, null, 150.0, 8, 90, INDOOR

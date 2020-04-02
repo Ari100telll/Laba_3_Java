@@ -22,8 +22,13 @@ class EventOptionsWriterTest extends BaseChildrenEventsOptionsManagerTest {
   @BeforeEach
   public void setUp() {
     createChildrenEventsOptions();
-    expectedString = "optionID, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue\r\nnull, aaa, null, 10.0, 7, 120, MIXED\r\nnull, bab, null, 11.0, 17, 240, MIXED\r\nnull, baa, null, 150.0, 8, 90, INDOOR\r\nnull, aba, null, 32.0, 4, 150, INDOOR\r\nnull, abb, null, 45.0, 10, 80, INDOOR, KR, [ball, jump rope]\r\n";
-    eventOptionsWriter = new EventOptionsWriter();
+    expectedString = "id, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue\r\n" + 
+        "null, aaa, null, 10.0, 7, 120, MIXED\r\n" + 
+        "null, bab, null, 11.0, 17, 240, MIXED\r\n" + 
+        "null, baa, null, 150.0, 8, 90, INDOOR\r\n" + 
+        "null, aba, null, 32.0, 4, 150, INDOOR\r\n" + 
+        "null, abb, null, 45.0, 10, 80, INDOOR, KR, [ball, jump rope]\r\n";
+        eventOptionsWriter = new EventOptionsWriter();
     eventOptionsReader = new EventOptionsReader();
   }
 
