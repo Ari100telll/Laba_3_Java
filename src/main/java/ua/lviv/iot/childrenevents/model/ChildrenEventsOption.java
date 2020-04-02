@@ -1,6 +1,7 @@
 package ua.lviv.iot.childrenevents.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ public class ChildrenEventsOption {
   protected double priceInHryvnas;
   protected int maxQuantityOfChildren;
   protected int durationInMinutes;
+  @Enumerated
   protected EventVenue venue;
 
   public Integer getId() {
@@ -152,13 +154,13 @@ public class ChildrenEventsOption {
 
   @Override
   public String toString() {
-    return "ChildrenEventsOption [name=" + name + ", contacts=" + contacts + ", priceInHryvnas=" + priceInHryvnas
-        + ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes=" + durationInMinutes + ", venue="
-        + venue + "]";
+    return "ChildrenEventsOption [id=" + id + ", name=" + name + ", contacts=" + contacts + ", priceInHryvnas="
+        + priceInHryvnas + ", maxQuantityOfChildren=" + maxQuantityOfChildren + ", durationInMinutes="
+        + durationInMinutes + ", venue=" + venue + "]";
   }
 
   public String getHeaders() {
-    return "optionID, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue";
+    return "id, name, contacts, priceInHryvnas, maxQuantityOfChildren, durationInMinutes, venue";
   }
 
   public String toCSV() {
