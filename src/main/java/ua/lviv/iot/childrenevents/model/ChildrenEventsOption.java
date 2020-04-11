@@ -2,20 +2,29 @@ package ua.lviv.iot.childrenevents.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "options")
 public class ChildrenEventsOption {
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
   protected String name;
   protected String contacts;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "children_events_company_id")
+  @JsonIgnoreProperties({"companyOptions","eventTowns"})
+  private ChildrenEventsCompany childrenEventsCompany;
   protected double priceInHryvnas;
   protected int maxQuantityOfChildren;
   protected int durationInMinutes;
@@ -166,6 +175,14 @@ public class ChildrenEventsOption {
   public String toCSV() {
     return id + ", " + name + ", " + contacts + ", " + priceInHryvnas + ", " + maxQuantityOfChildren + ", "
         + durationInMinutes + ", " + venue;
+  }
+
+  public ChildrenEventsCompany getChildrenEventsCompany() {
+    return childrenEventsCompany;
+  }
+
+  public void setChildrenEventsCompany(ChildrenEventsCompany childrenEventsCompany) {
+    this.childrenEventsCompany = childrenEventsCompany;
   }
 
 }

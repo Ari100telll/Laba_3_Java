@@ -20,7 +20,7 @@ import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 @RestController
 @RequestMapping(path = "/ChildrenEventsOptions")
 public class ChildrenEventsOptionsController {
-  private AtomicInteger idCounter = new AtomicInteger();
+  private AtomicInteger id2 = new AtomicInteger();
   @Autowired
   private ChildrenEventsOptionsService childrenEventsOptionsService;
 
@@ -38,7 +38,7 @@ public class ChildrenEventsOptionsController {
 
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
   public ChildrenEventsOption addOption(final @RequestBody ChildrenEventsOption option) {
-    option.setId(idCounter.incrementAndGet());
+    option.setId(id2.getAndIncrement());
     childrenEventsOptionsService.createOption(option);
     return option;
   }
