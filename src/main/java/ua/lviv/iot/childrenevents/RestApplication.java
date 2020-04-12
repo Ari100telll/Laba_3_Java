@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories({ "ua.lviv.iot.childrenevents.dataaccess" })
 public class RestApplication {
   public static void main(String[] args) {
+    System.out.println("-------------------------------------------");
     SpringApplication.run(RestApplication.class, args);
   }
-
 }

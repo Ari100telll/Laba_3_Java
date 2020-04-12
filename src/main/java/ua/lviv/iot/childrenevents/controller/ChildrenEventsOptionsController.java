@@ -2,6 +2,7 @@ package ua.lviv.iot.childrenevents.controller;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,15 +15,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import ua.lviv.iot.childrenevents.business.ChildrenEventsOptionsService;
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 
 @RestController
 @RequestMapping(path = "/ChildrenEventsOptions")
 public class ChildrenEventsOptionsController {
-  private AtomicInteger idCounter = new AtomicInteger();
   @Autowired
   private ChildrenEventsOptionsService childrenEventsOptionsService;
+
+  private AtomicInteger id = new AtomicInteger();
 
   @GetMapping
   public List<ChildrenEventsOption> getOptions() {
@@ -37,8 +40,9 @@ public class ChildrenEventsOptionsController {
   }
 
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
-  public ChildrenEventsOption addOption(final @RequestBody ChildrenEventsOption option) {
-    option.setId(idCounter.incrementAndGet());
+  public synchronized ChildrenEventsOption addOption(final @RequestBody ChildrenEventsOption option) {
+    option.setId(id.incrementAndGet());
+    System.out.println(childrenEventsOptionsService.getLastID());
     childrenEventsOptionsService.createOption(option);
     return option;
   }
