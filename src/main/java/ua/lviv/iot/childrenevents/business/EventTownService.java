@@ -13,7 +13,6 @@ import ua.lviv.iot.childrenevents.model.EventTown;
 public class EventTownService {
   @Autowired
   private EventTownRepository eventTownRepository;
-  
 
   public EventTown createTown(EventTown town) {
     return eventTownRepository.save(town);
@@ -45,5 +44,11 @@ public class EventTownService {
     }
     return oldTown;
   }
-  
+
+  public int getLastID() {
+   // List<EventTown> towns = eventTownRepository.findAll();
+    //int townsSize = towns != null ? towns.size() : 0;
+   // System.out.println(0);
+    return  0;
+  }
 }

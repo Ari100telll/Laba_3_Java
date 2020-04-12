@@ -11,10 +11,9 @@ import ua.lviv.iot.childrenevents.model.ChildrenEventsCompany;
 
 @Service
 public class ChildrenEventsCompanyService {
-  
+
   @Autowired
   private ChildrenEventsCompanyRepository childrenEventsCompanyRepository;
-  
 
   public ChildrenEventsCompany createCompany(ChildrenEventsCompany company) {
     return childrenEventsCompanyRepository.save(company);
@@ -46,5 +45,11 @@ public class ChildrenEventsCompanyService {
     }
     return oldCompany;
   }
-  
+
+  public int getLastID() {
+    List<ChildrenEventsCompany> companies = childrenEventsCompanyRepository.findAll();
+    int companiesSize = companies.size();
+    return companiesSize > 0 ? companies.get(companiesSize - 1).getId() : 0;
+  }
+
 }

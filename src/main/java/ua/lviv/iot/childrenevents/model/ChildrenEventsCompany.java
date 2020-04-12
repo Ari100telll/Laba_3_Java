@@ -4,9 +4,9 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -15,16 +15,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class ChildrenEventsCompany {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
 
   private String name;
   
-  @ManyToMany(mappedBy = "childrenEventsCompanies")
-  @JsonIgnoreProperties("childrenEventsCompanies")
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JsonIgnoreProperties({"childrenEventsCompanies"})
+  @JoinTable(name = "Companies_Towns", joinColumns = {
+      @JoinColumn(name = "company_id", nullable = false) }, inverseJoinColumns = {
+          @JoinColumn(name = "town_id", nullable = false) })
   private Set<EventTown> eventTowns;
   
-  @OneToMany(mappedBy = "childrenEventsCompany", fetch = FetchType.EAGER)
+  
+  
+  @OneToMany(fetch = FetchType.EAGER)
+  @JoinColumn(name = "children_events_company_id")
   @JsonIgnoreProperties("childrenEventsCompany")
   private Set<ChildrenEventsOption> companyOptions;
 

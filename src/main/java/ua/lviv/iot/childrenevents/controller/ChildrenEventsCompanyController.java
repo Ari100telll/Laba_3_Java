@@ -22,44 +22,44 @@ import ua.lviv.iot.childrenevents.model.ChildrenEventsCompany;
 @RestController
 @RequestMapping(path = "/ChildrenEventsCompany")
 public class ChildrenEventsCompanyController {
+  @Autowired
+  private ChildrenEventsCompanyService childrenEventsCompanyService;
 
-    private AtomicInteger id1 = new AtomicInteger();
-    @Autowired
-    private ChildrenEventsCompanyService childrenEventsCompanyService;
+  private AtomicInteger id = new AtomicInteger();
 
-    @GetMapping
-    public List<ChildrenEventsCompany> getCompanys() {
-      return childrenEventsCompanyService.getAllCompanies();
-    }
-  
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<ChildrenEventsCompany> getTown(final @PathVariable("id") Integer companyID) {
-      ChildrenEventsCompany company = childrenEventsCompanyService.getCompany(companyID);
-      return company == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
-          : new ResponseEntity<ChildrenEventsCompany>(company, HttpStatus.OK);
-    }
-    
-    @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
-    public ChildrenEventsCompany
-    addTown(final @RequestBody ChildrenEventsCompany company) {
-      company.setId(id1.getAndIncrement());
-      childrenEventsCompanyService.createCompany(company);
-      return company;
-    }
-    
-    @DeleteMapping(path = "/{id}")
-    public ResponseEntity<ChildrenEventsCompany> deleteTown(@PathVariable("id") Integer companyID) {
-      return childrenEventsCompanyService.deleteCompany(companyID) == null
-          ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
-          : new ResponseEntity<ChildrenEventsCompany>(HttpStatus.OK);
-    }
-    
-    @PutMapping(path = { "/{id}" }, produces = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<ChildrenEventsCompany> updateTown(@PathVariable("id") Integer companyID,
-        @RequestBody ChildrenEventsCompany company) {
-      company.setId(companyID);
-      ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateCompany(companyID, company);
-      return oldCompany == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
-          : new ResponseEntity<ChildrenEventsCompany>(oldCompany, HttpStatus.OK);
-    }
+  @GetMapping
+  public List<ChildrenEventsCompany> getCompanys() {
+    return childrenEventsCompanyService.getAllCompanies();
+  }
+
+  @GetMapping(path = "/{id}")
+  public ResponseEntity<ChildrenEventsCompany> getTown(final @PathVariable("id") Integer companyID) {
+    ChildrenEventsCompany company = childrenEventsCompanyService.getCompany(companyID);
+    return company == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
+        : new ResponseEntity<ChildrenEventsCompany>(company, HttpStatus.OK);
+  }
+
+  @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
+  public synchronized ChildrenEventsCompany addTown(final @RequestBody ChildrenEventsCompany company) {
+    company.setId(id.incrementAndGet());
+    System.out.println(childrenEventsCompanyService.getLastID());
+    childrenEventsCompanyService.createCompany(company);
+    return company;
+  }
+
+  @DeleteMapping(path = "/{id}")
+  public ResponseEntity<ChildrenEventsCompany> deleteTown(@PathVariable("id") Integer companyID) {
+    return childrenEventsCompanyService.deleteCompany(companyID) == null
+        ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
+        : new ResponseEntity<ChildrenEventsCompany>(HttpStatus.OK);
+  }
+
+  @PutMapping(path = { "/{id}" }, produces = { MediaType.APPLICATION_JSON_VALUE })
+  public ResponseEntity<ChildrenEventsCompany> updateTown(@PathVariable("id") Integer companyID,
+      @RequestBody ChildrenEventsCompany company) {
+    company.setId(companyID);
+    ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateCompany(companyID, company);
+    return oldCompany == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
+        : new ResponseEntity<ChildrenEventsCompany>(oldCompany, HttpStatus.OK);
+  }
 }

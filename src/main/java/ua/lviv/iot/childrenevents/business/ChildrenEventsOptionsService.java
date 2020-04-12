@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import ua.lviv.iot.childrenevents.dataaccess.ChildrenEventsOptionsRepository;
 import ua.lviv.iot.childrenevents.model.ChildrenEventsOption;
 
@@ -44,4 +45,11 @@ public class ChildrenEventsOptionsService {
     }
     return oldOption;
   }
+
+  public int getLastID() {
+    List<ChildrenEventsOption> options = childrenEventsOptionsRepository.findAll();
+    int optionsSize = options.size();
+    return optionsSize > 0 ? options.get(optionsSize - 1).getId() : 0;
+  }
+
 }
