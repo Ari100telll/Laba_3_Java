@@ -29,12 +29,12 @@ public class ChildrenEventsOptionsController {
 
   @GetMapping
   public List<ChildrenEventsOption> getOptions() {
-    return childrenEventsOptionsService.getAllOptions();
+    return childrenEventsOptionsService.getAllObjects();
   }
 
   @GetMapping(path = "/{id}")
   public ResponseEntity<ChildrenEventsOption> getOption(final @PathVariable("id") Integer optionID) {
-    ChildrenEventsOption option = childrenEventsOptionsService.getOption(optionID);
+    ChildrenEventsOption option = childrenEventsOptionsService.getObject(optionID);
     return option == null ? new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsOption>(option, HttpStatus.OK);
   }
@@ -42,14 +42,13 @@ public class ChildrenEventsOptionsController {
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
   public synchronized ChildrenEventsOption addOption(final @RequestBody ChildrenEventsOption option) {
     option.setId(id.incrementAndGet());
-    System.out.println(childrenEventsOptionsService.getLastID());
-    childrenEventsOptionsService.createOption(option);
+    childrenEventsOptionsService.createObject(option);
     return option;
   }
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<ChildrenEventsOption> deleteOption(@PathVariable("id") Integer optionID) {
-    return childrenEventsOptionsService.deleteOption(optionID) == null
+    return childrenEventsOptionsService.deleteObject(optionID) == null
         ? new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsOption>(HttpStatus.OK);
   }
@@ -58,7 +57,7 @@ public class ChildrenEventsOptionsController {
   public ResponseEntity<ChildrenEventsOption> updateOption(@PathVariable("id") Integer optionID,
       @RequestBody ChildrenEventsOption option) {
     option.setId(optionID);
-    ChildrenEventsOption oldOption = childrenEventsOptionsService.updateOption(optionID, option);
+    ChildrenEventsOption oldOption = childrenEventsOptionsService.updateObject(optionID, option);
     return oldOption == null ? new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsOption>(oldOption, HttpStatus.OK);
   }

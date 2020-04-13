@@ -29,12 +29,12 @@ public class ChildrenEventsCompanyController {
 
   @GetMapping
   public List<ChildrenEventsCompany> getCompanys() {
-    return childrenEventsCompanyService.getAllCompanies();
+    return childrenEventsCompanyService.getAllObjects();
   }
 
   @GetMapping(path = "/{id}")
   public ResponseEntity<ChildrenEventsCompany> getTown(final @PathVariable("id") Integer companyID) {
-    ChildrenEventsCompany company = childrenEventsCompanyService.getCompany(companyID);
+    ChildrenEventsCompany company = childrenEventsCompanyService.getObject(companyID);
     return company == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsCompany>(company, HttpStatus.OK);
   }
@@ -42,14 +42,13 @@ public class ChildrenEventsCompanyController {
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
   public synchronized ChildrenEventsCompany addTown(final @RequestBody ChildrenEventsCompany company) {
     company.setId(id.incrementAndGet());
-    System.out.println(childrenEventsCompanyService.getLastID());
-    childrenEventsCompanyService.createCompany(company);
+    childrenEventsCompanyService.createObject(company);
     return company;
   }
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<ChildrenEventsCompany> deleteTown(@PathVariable("id") Integer companyID) {
-    return childrenEventsCompanyService.deleteCompany(companyID) == null
+    return childrenEventsCompanyService.deleteObject(companyID) == null
         ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsCompany>(HttpStatus.OK);
   }
@@ -58,7 +57,7 @@ public class ChildrenEventsCompanyController {
   public ResponseEntity<ChildrenEventsCompany> updateTown(@PathVariable("id") Integer companyID,
       @RequestBody ChildrenEventsCompany company) {
     company.setId(companyID);
-    ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateCompany(companyID, company);
+    ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateObject(companyID, company);
     return oldCompany == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsCompany>(oldCompany, HttpStatus.OK);
   }

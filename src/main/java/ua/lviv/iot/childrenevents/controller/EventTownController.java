@@ -30,12 +30,12 @@ public class EventTownController {
 
   @GetMapping
   public List<EventTown> getTowns() {
-    return eventTownService.getAllTowns();
+    return eventTownService.getAllObjects();
   }
 
   @GetMapping(path = "/{id}")
   public ResponseEntity<EventTown> getTown(final @PathVariable("id") Integer townID) {
-    EventTown town = eventTownService.getTown(townID);
+    EventTown town = eventTownService.getObject(townID);
     return town == null ? new ResponseEntity<EventTown>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<EventTown>(town, HttpStatus.OK);
   }
@@ -43,21 +43,20 @@ public class EventTownController {
   @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE, "application/x-yaml" })
   public synchronized EventTown addTown(final @RequestBody EventTown town) {
     town.setId(id.incrementAndGet());
-    System.out.println(eventTownService.getLastID());
-    eventTownService.createTown(town);
+    eventTownService.createObject(town);
     return town;
   }
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<EventTown> deleteTown(@PathVariable("id") Integer townID) {
-    return eventTownService.deleteTown(townID) == null ? new ResponseEntity<EventTown>(HttpStatus.NOT_FOUND)
+    return eventTownService.deleteObject(townID) == null ? new ResponseEntity<EventTown>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<EventTown>(HttpStatus.OK);
   }
 
   @PutMapping(path = { "/{id}" }, produces = { MediaType.APPLICATION_JSON_VALUE })
   public ResponseEntity<EventTown> updateTown(@PathVariable("id") Integer townID, @RequestBody EventTown town) {
     town.setId(townID);
-    EventTown oldTown = eventTownService.updateTown(townID, town);
+    EventTown oldTown = eventTownService.updateObject(townID, town);
     return oldTown == null ? new ResponseEntity<EventTown>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<EventTown>(oldTown, HttpStatus.OK);
   }
