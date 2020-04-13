@@ -21,11 +21,9 @@ public abstract class AbstractService<T> {
     return this.getRepository().findAll();
   }
 
-  public T updateObject(Integer objectID, T object) {
-    T oldObject = null;
+  public T updateObject(Integer objectID, T object, T oldObject) {
     T temporaryObject = this.getRepository().findById(objectID).orElse(null);
     if (temporaryObject != null) {
-      oldObject = null;
       BeanUtils.copyProperties(temporaryObject, oldObject);
       this.getRepository().save(object);
     }

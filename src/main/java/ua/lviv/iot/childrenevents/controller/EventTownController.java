@@ -56,7 +56,7 @@ public class EventTownController {
   @PutMapping(path = { "/{id}" }, produces = { MediaType.APPLICATION_JSON_VALUE })
   public ResponseEntity<EventTown> updateTown(@PathVariable("id") Integer townID, @RequestBody EventTown town) {
     town.setId(townID);
-    EventTown oldTown = eventTownService.updateObject(townID, town);
+    EventTown oldTown = eventTownService.updateObject(townID, town, new EventTown());
     return oldTown == null ? new ResponseEntity<EventTown>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<EventTown>(oldTown, HttpStatus.OK);
   }

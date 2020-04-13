@@ -57,7 +57,7 @@ public class ChildrenEventsCompanyController {
   public ResponseEntity<ChildrenEventsCompany> updateTown(@PathVariable("id") Integer companyID,
       @RequestBody ChildrenEventsCompany company) {
     company.setId(companyID);
-    ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateObject(companyID, company);
+    ChildrenEventsCompany oldCompany = childrenEventsCompanyService.updateObject(companyID, company,new ChildrenEventsCompany());
     return oldCompany == null ? new ResponseEntity<ChildrenEventsCompany>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsCompany>(oldCompany, HttpStatus.OK);
   }
