@@ -57,7 +57,7 @@ public class ChildrenEventsOptionsController {
   public ResponseEntity<ChildrenEventsOption> updateOption(@PathVariable("id") Integer optionID,
       @RequestBody ChildrenEventsOption option) {
     option.setId(optionID);
-    ChildrenEventsOption oldOption = childrenEventsOptionsService.updateObject(optionID, option);
+    ChildrenEventsOption oldOption = childrenEventsOptionsService.updateObject(optionID, option, new ChildrenEventsOption());
     return oldOption == null ? new ResponseEntity<ChildrenEventsOption>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<ChildrenEventsOption>(oldOption, HttpStatus.OK);
   }
