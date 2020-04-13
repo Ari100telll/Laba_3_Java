@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import ua.lviv.iot.childrenevents.model.ChildrenEventsCompany;
 
 @Repository
-public interface ChildrenEventsCompanyRepository  extends JpaRepository<ChildrenEventsCompany, Integer>{
+public interface ChildrenEventsCompanyRepository extends JpaRepository<ChildrenEventsCompany, Integer>{
 
 }
